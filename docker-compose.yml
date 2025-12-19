@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./backend
+    container_name: cancercare-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    restart: always
+
+  frontend:
+    build: ./FinalProj_React/react-proj-scd
+    container_name: cancercare-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    restart: always
